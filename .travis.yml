@@ -13,6 +13,13 @@ env:
 install:
   - pip install pipenv
   - pipenv sync -d
+  - pipenv install codecov
 
 script:
   - pipenv run flake8 .
+  - pytest tst_django1 --cov=tst_django1
+
+after_success:
+  - codecov
+
+
