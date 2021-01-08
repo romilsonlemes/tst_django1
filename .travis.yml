@@ -13,6 +13,7 @@ env:
 install:
   - pip install pipenv
   - pipenv sync -d
+  - pipenv install dj-database-url
   - cp contrib/env-sample .env
 
 script:
