@@ -5,6 +5,11 @@ sudo: true
 python:
   - 3.9
 
+services:
+  postgresql
+addons:
+  postgresql: '9.5'
+
 env:
   global:
     - PIPENV_VENV_IN_PROJECT=1
@@ -13,8 +18,10 @@ env:
 install:
   - pip install pipenv
   - pipenv sync -d
-  - pipenv install dj-database-url
   - cp contrib/env-sample .env
+
+before_script:
+  - psql -c "CREATE DATABASE testdb;" -U postgres
 
 script:
   - pipenv run flake8 .
