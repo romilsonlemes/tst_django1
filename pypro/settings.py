@@ -141,6 +141,9 @@ if AWS_ACCESS_KEY_ID:
     AWS_AUTO_CREATE_BUCKET = False
     AWS_QUERYSTRING_AUTH = True
     AWS_S3_CUSTOM_DOMAIN = None
+
+    COLLECTFAST_ENABLED = True
+
     AWS_DEFAULT_ACL = 'private'
 
     # Static Assets
@@ -151,9 +154,9 @@ if AWS_ACCESS_KEY_ID:
     STATIC_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{STATIC_S3_PATH}/'
     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-    # Upload media Folder
+    # Upload Media Folder
     # --------------------------------------------------------
-    DEFAULTFILES_STORAGE = 's3_folder_storage.s3.DefaultStorage'
+    DEFAULT_FILES_STORAGE = 's3_folder_storage.s3.DefaultStorage'
     DEFAULT_S3_PATH = 'media'
     MEDIA_ROOT = f'/{DEFAULT_S3_PATH}/'
     MEDIA_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{DEFAULT_S3_PATH}/'
