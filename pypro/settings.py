@@ -153,7 +153,7 @@ if AWS_ACCESS_KEY_ID:
 
     # Upload media Folder
     # --------------------------------------------------------
-    DEFAULTFILES_STORAGE = 's3_folder_storage.s3.DefaultStorage'
+    DEFAULT_FILES_STORAGE = 's3_folder_storage.s3.DefaultStorage'
     DEFAULT_S3_PATH = 'media'
     MEDIA_ROOT = f'/{DEFAULT_S3_PATH}/'
     MEDIA_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{DEFAULT_S3_PATH}/'
