@@ -32,6 +32,11 @@ DEBUG = config("DEBUG", cast=bool)
 # Configuração de Dominios permitidos para acessar a aplicação
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+# Configuração de usuário logado
+# ----------------------------------
+AUTH_USER_MODEL = 'base.User'
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
