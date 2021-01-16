@@ -49,7 +49,7 @@ class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ('groups', 'user_permissions',)
 
     def get_fieldsets(self, request, obj=None):
-        if not obj:  # pragma: no cover
+        if not obj:
             return self.add_fieldsets
         return super().get_fieldsets(request, obj)
 
@@ -58,7 +58,7 @@ class UserAdmin(admin.ModelAdmin):
         Use special form during user creation
         """
         defaults = {}
-        if obj is None:  # pragma: no cover
+        if obj is None:
             defaults['form'] = self.add_form
         defaults.update(kwargs)
         return super().get_form(request, obj, **defaults)
@@ -89,7 +89,7 @@ class UserAdmin(admin.ModelAdmin):
         # the permission to change users. To avoid the problem entirely, we
         # disallow users from adding users if they don't have change
         # permission.
-        if not self.has_change_permission(request):  # pragma: no cover
+        if not self.has_change_permission(request):
             if self.has_add_permission(request) and settings.DEBUG:
                 # Raise Http404 in debug mode so that the user gets a helpful
                 # error message.
@@ -99,7 +99,7 @@ class UserAdmin(admin.ModelAdmin):
                     'account have both the "Add user" and "Change user" '
                     'permissions set.')
             raise PermissionDenied
-        if extra_context is None:  # pragma: no cover
+        if extra_context is None:
             extra_context = {}
         username_field = self.model._meta.get_field(self.model.USERNAME_FIELD)
         defaults = {
@@ -112,14 +112,14 @@ class UserAdmin(admin.ModelAdmin):
     @sensitive_post_parameters_m
     def user_change_password(self, request, id, form_url=''):
         user = self.get_object(request, unquote(id))
-        if not self.has_change_permission(request, user):  # pragma: no cover
+        if not self.has_change_permission(request, user):
             raise PermissionDenied
-        if user is None:  # pragma: no cover
+        if user is None:
             raise Http404(_('%(name)s object with primary key %(key)r does not exist.') % {
                 'name': self.model._meta.verbose_name,
                 'key': escape(id),
             })
-        if request.method == 'POST':  # pragma: no cover
+        if request.method == 'POST':
             form = self.change_password_form(user, request.POST)
             if form.is_valid():
                 form.save()
@@ -138,7 +138,7 @@ class UserAdmin(admin.ModelAdmin):
                         args=(user.pk,),
                     )
                 )
-        else:  # pragma: no cover
+        else:
             form = self.change_password_form(user)
 
         fieldsets = [(None, {'fields': list(form.base_fields)})]
@@ -164,6 +164,7 @@ class UserAdmin(admin.ModelAdmin):
         }
 
         request.current_app = self.admin_site.name
+
         return TemplateResponse(
             request,
             self.change_user_password_template or
@@ -182,7 +183,7 @@ class UserAdmin(admin.ModelAdmin):
         # button except in two scenarios:
         # * The user has pressed the 'Save and add another' button
         # * We are adding a user in a popup
-        if '_addanother' not in request.POST and IS_POPUP_VAR not in request.POST:  # pragma: no cover
+        if '_addanother' not in request.POST and IS_POPUP_VAR not in request.POST:
             request.POST = request.POST.copy()
             request.POST['_continue'] = 1
         return super().response_add(request, obj, post_url_continue)
