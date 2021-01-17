@@ -49,11 +49,11 @@ class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ('groups', 'user_permissions',)
 
     def get_fieldsets(self, request, obj=None):
-        if not obj:
+        if not obj:  # pragma: no cover
             return self.add_fieldsets
-        return super().get_fieldsets(request, obj)
+        return super().get_fieldsets(request, obj)  # pragma: no cover
 
-    def get_form(self, request, obj=None, **kwargs):
+    def get_form(self, request, obj=None, **kwargs):  # pragma: no cover
         """
         Use special form during user creation
         """
@@ -72,17 +72,17 @@ class UserAdmin(admin.ModelAdmin):
             ),
         ] + super().get_urls()
 
-    def lookup_allowed(self, lookup, value):
+    def lookup_allowed(self, lookup, value):  # pragma: no cover
         # Don't allow lookups involving passwords.
         return not lookup.startswith('password') and super().lookup_allowed(lookup, value)
 
     @sensitive_post_parameters_m
     @csrf_protect_m
-    def add_view(self, request, form_url='', extra_context=None):
+    def add_view(self, request, form_url='', extra_context=None):  # pragma: no cover
         with transaction.atomic(using=router.db_for_write(self.model)):
             return self._add_view(request, form_url, extra_context)
 
-    def _add_view(self, request, form_url='', extra_context=None):
+    def _add_view(self, request, form_url='', extra_context=None):  # pragma: no cover
         # It's an error for a user to have add permission but NOT change
         # permission for users. If we allowed such users to add users, they
         # could create superusers, which would mean they would essentially have
@@ -110,7 +110,7 @@ class UserAdmin(admin.ModelAdmin):
         return super().add_view(request, form_url, extra_context)
 
     @sensitive_post_parameters_m
-    def user_change_password(self, request, id, form_url=''):
+    def user_change_password(self, request, id, form_url=''):  # pragma: no cover
         user = self.get_object(request, unquote(id))
         if not self.has_change_permission(request, user):
             raise PermissionDenied
@@ -172,7 +172,7 @@ class UserAdmin(admin.ModelAdmin):
             context,
         )
 
-    def response_add(self, request, obj, post_url_continue=None):
+    def response_add(self, request, obj, post_url_continue=None):  # pragma: no cover
         """
         Determine the HttpResponse for the add_view stage. It mostly defers to
         its superclass implementation but is customized because the User model
