@@ -186,3 +186,20 @@ if AWS_ACCESS_KEY_ID:  # pragma: no cover
 
     INSTALLED_APPS.append('s3_folder_storage')
     INSTALLED_APPS.append('storages')
+
+# Configuração do SENTRY_DSN
+SENTRY_DSN = config('SENTRY_DSN', default=None)
+
+if SENTRY_DSN:  # pragma: no cover
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
