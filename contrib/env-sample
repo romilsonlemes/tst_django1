@@ -1,13 +1,13 @@
 DEBUG=False
-SECRET_KEY='Defina a sua chave secreta'
+SECRET_KEY=$aa^el@2a0rxui6lxqu5r-n=j37ch$ow(jak0809he^(io%4oc
 ALLOWED_HOSTS='pythonpro-romis-django.herokuapp.com,mobiledevbr.com'
 DATABASE_URL=postgres://postgres:postgres@localhost/testdb
 
 # Configurações do AWS
 # ---------------------
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_STORAGE_BUCKET_NAME=
+AWS_ACCESS_KEY_ID=AKIAVNG5OBQHZL36DM3R
+AWS_SECRET_ACCESS_KEY=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
+AWS_STORAGE_BUCKET_NAME=lemesdjango1
 INTERNAL_IPS=127.0.0.1
-SENTRY_DSN=
+SENTRY_DSN=https://a4fedd97bb8c483ab508512e92e79807@o517931.ingest.sentry.io/5626291
 
