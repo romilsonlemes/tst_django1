@@ -13,8 +13,8 @@ def test_status_code(resp):  # pragma: no cover
 
 
 def test_titulo_video(resp):  # pragma: no cover
-    assert_contains(resp, '<h1 class="mt-4 mb-3">Video Aperitivo: Motivação</h1>')
+    assert_contains(resp, '<h1 class="mt-4 mb-3">Video Aperitivos: Motivação</h1>')
 
 
 def test_conteudo_video(resp):  # pragma: no cover
-    assert_contains(resp, '<iframe src="https://player.vimeo.com/video/515125492"')
+    assert_contains(resp, '<iframe src="https://player.vimeo.com/video/515479903"')
