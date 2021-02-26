@@ -21,3 +21,15 @@ def test_status_code(resp):  # pragma: no cover
 )
 def test_titulo_video(resp, titulo):  # pragma: no cover
     assert_contains(resp, titulo)
+
+
+@pytest.mark.parametrize(
+    'slug',
+    [
+        'motivacao',
+        'jessica-gata'
+    ]
+)
+def test_link_video(resp, slug):  # pragma: no cover
+    video_link = reverse('aperitivos:video', args=(slug,))
+    assert_contains(resp, f'href="{video_link}"')
