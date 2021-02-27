@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignorar o envio da Base de Dados para o GITHUB
+# Postgresql
+
+.pagdata
