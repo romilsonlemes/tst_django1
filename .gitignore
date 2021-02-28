@@ -36,9 +36,6 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
-# Unidades de testes / coverage reports
-htmlcov/
 .tox/
 .nox/
 .coverage
@@ -50,6 +47,9 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+
+# Unidades de testes / coverage reports
+htmlcov/
 
 # Translations
 *.mo
@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignorar o envio da Base de Dados para o GITHUB
+# Postgresql
+.pgdata
