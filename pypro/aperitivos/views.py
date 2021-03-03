@@ -16,5 +16,5 @@ def indice(request):  # pragma: no cover
 
 
 def video(request, slug):  # pragma: no cover
-    video = videos_dct[slug]
+    video = Video.objects.get(slug=slug)
     return render(request, 'aperitivos/video.html', context={'video': video})
