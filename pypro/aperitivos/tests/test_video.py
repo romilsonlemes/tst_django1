@@ -10,7 +10,7 @@ from pypro.django_assertions import assert_contains
 
 
 @pytest.fixture
-def video(db):
+def video(db):  # pragma: no cover
     return mommy.make(Video)
 
 
