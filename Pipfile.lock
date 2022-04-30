@@ -81,11 +81,10 @@
         },
         "django-debug-toolbar": {
             "hashes": [
-                "sha256:84e2607d900dbd571df0a2acf380b47c088efb787dce9805aefeb407341961d2",
-                "sha256:9e5a25d0c965f7e686f6a8ba23613ca9ca30184daa26487706d4829f5cfb697a"
+                "sha256:74151c292db9455fa5127d64a4414faee8ee3b1cddfb17f0e93cf3f13cd84bc1",
+                "sha256:85015fedbf937a6f3526617546fefaf21859eb1f9bbbc82a2fcba313d7c15917"
             ],
-            "index": "pypi",
-            "version": "==3.2"
+            "version": "==3.3.0"
         },
         "django-s3-folder-storage": {
             "hashes": [
